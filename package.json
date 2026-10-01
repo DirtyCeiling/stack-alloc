@@ -1,0 +1,17 @@
+{
+  "name": "stack-alloc",
+  "version": "1.0.0",
+  "description": "钢厂棒材库区垛位推荐算法包：入库归堆推荐 / 出库选捆 / 倒垛落点 + 垛容几何与监测范围口径（纯函数，零依赖，Node 与浏览器双端可用）",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./browser.js": "./browser.js"
+  },
+  "scripts": {
+    "test": "node self-test.mjs",
+    "build": "node browser.js --write"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
