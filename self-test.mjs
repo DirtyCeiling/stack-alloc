@@ -71,9 +71,8 @@ console.log('== 监测范围 ==');
   const normal = { span: 0, merged: false };
   const merged = { span: 3, merged: true };
   assert(slotInOpScope(normal, ms) && !slotInOpScope({ span: 2, merged: false }, ms), '普通库位按所在跨判定');
-  assert(slotInOpScope(merged, ms, { mergedAnySpan: true }), '整跨合并位：任一跨监测即可荐（确认页口径）');
-  assert(slotInOpScope(merged, ms, { mergedAnySpan: false, spanOfSlot: () => 1 }), '整跨合并位：停靠跨监测才算（沙盘口径）');
-  assert(!slotInOpScope(merged, ms, { mergedAnySpan: false, spanOfSlot: () => 2 }), '整跨合并位：停靠跨未监测不可作业');
+  assert(slotInOpScope(merged, ms, { spanOfSlot: () => 0 }), '整跨合并位（现属 A 跨）：A 跨监测即可荐');
+  assert(!slotInOpScope(merged, ms, { spanOfSlot: () => 2 }), '整跨合并位（现属 A 跨）：停靠跨口径下按所在跨判定');
   assert(slotInOpScope(normal, monitoredScopesOf({ robot: { spanB: 1 } }), { mergedAnySpan: false }) === false,
     '仅监测 B 跨时 A 跨库位不在作业范围');
 }

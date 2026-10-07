@@ -22,12 +22,10 @@ export function regionRestrictedOf(ms) {
 }
 
 /** 库位是否在作业范围内（跨级）。
- *  普通库位：所在跨被监测即可（跨内全部号区均可）。
- *  整跨合并位（纵贯 A~C 三跨）：两种口径由 mergedAnySpan 选择——
- *    true（进厂确认页荐垛口径）：任一跨监测即可荐（执行跨由后续调度决定）；
- *    false（沙盘执行口径）：货车按固定跨停靠组车，须该跨被监测（spanOfSlot 给出停靠跨）。 */
-export function slotInOpScope(slot, ms, { spanOfSlot, mergedAnySpan = true } = {}) {
+ *  所在跨被监测即可（跨内全部号区均可）。
+ *  一跨 14~16 整宽合并位（merged=1）库位记录 span=0，随一跨（A 跨）判定——
+ *  现场该分区在一跨跨内整宽码放，不再纵贯三跨。 */
+export function slotInOpScope(slot, ms, { spanOfSlot } = {}) {
   const sp = spanOfSlot ? spanOfSlot(slot) : slot.span;
-  if (slot.merged || sp >= 3) return mergedAnySpan ? ms.length > 0 : ms.some(m => m.span === sp);
   return ms.some(m => m.span === sp);
 }
