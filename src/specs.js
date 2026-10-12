@@ -8,11 +8,13 @@ export const SPECS = [
   { name: '圆钢 Φ50',  dia: 50, rods: 4,  family: 'round' },
   { name: '圆钢 Φ60',  dia: 60, rods: 3,  family: 'round' },
   { name: '方钢 40×40', dia: 40, rods: 5, family: 'square' },
-  // 管材（无缝钢管，Φ50~Φ600；小口径成捆，Φ200 起单支吊运不打带）
+  // 管材（无缝钢管，Φ50~Φ600；小口径成捆，Φ200 起单支吊运不打带；
+  // Φ436×32 为大口径厚壁管真实标签规格，外径 436mm × 壁厚 32mm，单支吊运）
   { name: '管材 Φ50',  dia: 50,  rods: 6, family: 'pipe' },
   { name: '管材 Φ100', dia: 100, rods: 6, family: 'pipe' },
   { name: '管材 Φ200', dia: 200, rods: 1, family: 'pipe' },
   { name: '管材 Φ400', dia: 400, rods: 1, family: 'pipe' },
+  { name: '管材 Φ436×32', dia: 436, rods: 1, family: 'pipe' },
   { name: '管材 Φ600', dia: 600, rods: 1, family: 'pipe' },
 ];
 
